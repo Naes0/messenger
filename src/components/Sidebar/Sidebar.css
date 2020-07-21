@@ -1,0 +1,13 @@
+.sidebar {
+  margin-left: 15px;
+}
+
+.banner {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  padding-right: 10px;
+}
