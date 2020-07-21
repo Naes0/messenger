@@ -24,26 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = [
-  {
-    id: 1,
-    from: "Sean O'Neill",
-    message: 'I am super cool and awesome and wow',
-  },
-  {
-    id: 2,
-    from: 'Soyeon Kim',
-    message: 'I am super Cute',
-  },
-  {
-    id: 3,
-    from: 'Daniel Gan',
-    message: 'I am big',
-  },
-];
-
-const ChatList = () => {
+const ChatList = (props) => {
   const classes = useStyles;
+  const { data } = props;
   return (
     <div className="ChatList">
       <List className={classes.root}>
