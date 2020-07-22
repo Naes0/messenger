@@ -1,5 +1,12 @@
-import { Avatar, Drawer, Button, TextField } from '@material-ui/core';
+import {
+  Avatar,
+  Drawer,
+  Button,
+  TextField,
+  InputAdornment,
+} from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Profilephoto from '../../assets/profile_photo.jpg';
 import ChatList from './ChatList/ChatList';
@@ -22,11 +29,27 @@ const data = [
     from: 'Daniel Gan',
     message: 'I am big',
   },
+  {
+    id: 4,
+    from: 'Daniel Gan',
+    message: 'I am small',
+  },
 ];
+
+const useStyles = makeStyles((theme) => ({
+  inputRoot: {
+    height: '36px',
+    borderRadius: '50px',
+    backgroundColor: 'rgba(0, 0, 0, .04)',
+  },
+  margin: {
+    margin: theme.spacing(0.5),
+  },
+}));
 
 const Sidebar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-
+  const classes = useStyles();
   const toggleDrawer = (open) => (event) => {
     if (
       event.type === 'keydown' &&
@@ -51,14 +74,16 @@ const Sidebar = () => {
           <div className="search">
             <Autocomplete
               id="search-messages"
+              classes={classes}
               freeSolo
               options={data.map((chat) => chat.message)}
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  className={classes.margin}
                   label="Search Messenger"
                   margin="normal"
-                  variant="outlined"
+                  varient="outlined"
                 />
               )}
             />
