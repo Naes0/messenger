@@ -4,6 +4,7 @@ import {
   Button,
   TextField,
   InputAdornment,
+  OutlinedInput,
 } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
@@ -80,10 +81,9 @@ const Sidebar = () => {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  className={classes.margin}
                   label="Search Messenger"
                   margin="normal"
-                  varient="outlined"
+                  variant="outlined"
                 />
               )}
             />
