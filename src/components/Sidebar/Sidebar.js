@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Drawer,
-  Button,
-  TextField,
-  InputAdornment,
-  OutlinedInput,
-} from '@material-ui/core';
+import { Avatar, Drawer, Button, TextField } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
@@ -37,19 +30,29 @@ const data = [
   },
 ];
 
+const maxDrawWidth = 420;
+
 const useStyles = makeStyles((theme) => ({
-  inputRoot: {
+  input: {
     height: '36px',
     borderRadius: '50px',
     backgroundColor: 'rgba(0, 0, 0, .04)',
+    width: maxDrawWidth,
+  },
+  drawer: {
+    width: maxDrawWidth,
   },
   margin: {
     margin: theme.spacing(0.5),
+  },
+  cssLabel: {
+    lineHeight: '1px',
   },
 }));
 
 const Sidebar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [chatData, setChatData] = useState(data);
   const classes = useStyles();
   const toggleDrawer = (open) => (event) => {
     if (
@@ -58,13 +61,23 @@ const Sidebar = () => {
     ) {
       return;
     }
-
     setSidebarOpen(open);
   };
+
+  const handleSearchChange = (text) => {
+    setChatData(
+      data.filter((chat) => chat.message.toLowerCase().includes(text))
+    );
+  };
+
   return (
     <>
       <Button onClick={toggleDrawer(true)}>SIDEBAR</Button>
-      <Drawer open={isSidebarOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        open={isSidebarOpen}
+        onClose={toggleDrawer(false)}
+        className={classes.drawer}
+      >
         <div className="sidebar">
           <div className="banner">
             <div className="avatar">
@@ -73,23 +86,21 @@ const Sidebar = () => {
             <h1>Chats</h1>
           </div>
           <div className="search">
-            <Autocomplete
-              id="search-messages"
-              classes={classes}
-              freeSolo
-              options={data.map((chat) => chat.message)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Search Messenger"
-                  margin="normal"
-                  variant="outlined"
-                />
-              )}
+            <TextField
+              label="Search Messenger"
+              margin="normal"
+              variant="outlined"
+              InputProps={{
+                className: classes.input,
+              }}
+              InputLabelProps={{
+                className: classes.cssLabel,
+              }}
+              onChange={(event) => handleSearchChange(event.target.value)}
             />
           </div>
           <div className="chatList">
-            <ChatList data={data} />
+            <ChatList data={chatData} />
           </div>
         </div>
       </Drawer>
