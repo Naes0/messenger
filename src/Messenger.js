@@ -4,10 +4,12 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Chatbar from './components/Chatbar/Chatbar';
 
 const Messenger = () => {
+  const maxDrawWidth = 390;
+
   return (
     <div className="Messenger">
-      <Chatbar />
-      <Sidebar />
+      <Chatbar drawWidth={maxDrawWidth} />
+      <Sidebar drawWidth={maxDrawWidth} />
     </div>
   );
 };

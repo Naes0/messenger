@@ -20,38 +20,43 @@ const data = [
   {
     id: 3,
     from: 'Daniel Gan',
-    message: 'I am big',
+    message: 'I am super small',
   },
   {
     id: 4,
-    from: 'Daniel Gan',
-    message: 'I am small',
+    from: 'Nhat Dao',
+    message: 'I am big',
+  },
+  {
+    id: 5,
+    from: 'Nhan Dao',
+    message: 'I am big',
   },
 ];
 
-const useStyles = makeStyles((theme) => ({
-  input: {
-    height: '36px',
-    borderRadius: '50px',
-    backgroundColor: 'rgba(0, 0, 0, .04)',
-    width: maxDrawWidth,
-  },
-  drawer: {
-    width: maxDrawWidth,
-    flexShrink: 0,
-  },
-  margin: {
-    margin: theme.spacing(0.5),
-  },
-  cssLabel: {
-    lineHeight: '1px',
-  },
-}));
-
-const maxDrawWidth = 420;
-
-const Sidebar = () => {
+const Sidebar = (props) => {
   const [chatData, setChatData] = useState(data);
+  const { drawWidth } = props;
+
+  const useStyles = makeStyles((theme) => ({
+    input: {
+      height: '36px',
+      borderRadius: '50px',
+      backgroundColor: 'rgba(0, 0, 0, .04)',
+      width: drawWidth,
+    },
+    drawer: {
+      width: drawWidth,
+      flexShrink: 0,
+    },
+    margin: {
+      margin: theme.spacing(0.5),
+    },
+    cssLabel: {
+      lineHeight: '1px',
+    },
+  }));
+
   const classes = useStyles();
 
   const handleSearchChange = (text) => {
