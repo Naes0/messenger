@@ -3,24 +3,21 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Profilephoto from '../../assets/profile_photo.jpg';
 
-const maxDrawWidth = 420;
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    width: `calc(100% - ${maxDrawWidth}px)`,
-    marginLeft: maxDrawWidth,
-  },
-}));
-
-const Chatbar = () => {
+const Chatbar = (props) => {
+  const { drawWidth } = props;
+  const useStyles = makeStyles((theme) => ({
+    appBar: {
+      width: `calc(100% - ${drawWidth}px - 30px)`,
+      marginLeft: drawWidth,
+      backgroundColor: '#FFFFFF',
+    },
+  }));
   const classes = useStyles();
   return (
     <>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar} color="default">
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            Permanent drawer
-          </Typography>
+          <h1>Name</h1>
         </Toolbar>
       </AppBar>
     </>
