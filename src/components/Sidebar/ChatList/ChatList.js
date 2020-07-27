@@ -14,10 +14,8 @@ import {
 import Profilephoto from '../../../assets/profile_photo.jpg';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: '36ch',
-    backgroundColor: theme.palette.background.paper,
+  button: {
+    borderRadius: '10px',
   },
   inline: {
     display: 'inline',
@@ -25,11 +23,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ChatList = (props) => {
-  const classes = useStyles;
   const { data } = props;
   return (
     <div className="ChatList">
-      <List className={classes.root}>
+      <List>
         {data.map((chat) => (
           <ChatPreview key={chat.id} {...chat} />
         ))}
@@ -39,11 +36,15 @@ const ChatList = (props) => {
 };
 
 const ChatPreview = (props) => {
-  const classes = useStyles;
+  const classes = useStyles();
   const { from, message } = props;
   return (
     <>
-      <ListItem alignItems="flex-start">
+      <ListItem
+        alignItems="flex-start"
+        button="true"
+        className={classes.button}
+      >
         <ListItemAvatar>
           <Avatar src={Profilephoto} />
         </ListItemAvatar>
@@ -62,7 +63,6 @@ const ChatPreview = (props) => {
           }
         />
       </ListItem>
-      <Divider variant="fullwidth" component="li" />
     </>
   );
 };
