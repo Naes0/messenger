@@ -1,5 +1,4 @@
-import { Avatar, Drawer, Button, TextField } from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
+import { Avatar, Drawer, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Profilephoto from '../../assets/profile_photo.jpg';
@@ -30,8 +29,6 @@ const data = [
   },
 ];
 
-const maxDrawWidth = 420;
-
 const useStyles = makeStyles((theme) => ({
   input: {
     height: '36px',
@@ -41,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: maxDrawWidth,
+    flexShrink: 0,
   },
   margin: {
     margin: theme.spacing(0.5),
@@ -50,34 +48,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const maxDrawWidth = 420;
+
 const Sidebar = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [chatData, setChatData] = useState(data);
   const classes = useStyles();
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-    setSidebarOpen(open);
-  };
 
   const handleSearchChange = (text) => {
     setChatData(
-      data.filter((chat) => chat.message.toLowerCase().includes(text))
+      data.filter((chat) =>
+        chat.message.toLowerCase().includes(text.toLowerCase())
+      )
     );
   };
 
   return (
     <>
-      <Button onClick={toggleDrawer(true)}>SIDEBAR</Button>
-      <Drawer
-        open={isSidebarOpen}
-        onClose={toggleDrawer(false)}
-        className={classes.drawer}
-      >
+      <Drawer variant="permanent" className={classes.drawer} anchor="left">
         <div className="sidebar">
           <div className="banner">
             <div className="avatar">
