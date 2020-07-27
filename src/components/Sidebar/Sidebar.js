@@ -56,8 +56,10 @@ const Sidebar = () => {
 
   const handleSearchChange = (text) => {
     setChatData(
-      data.filter((chat) =>
-        chat.message.toLowerCase().includes(text.toLowerCase())
+      data.filter(
+        (chat) =>
+          chat.message.toLowerCase().includes(text.toLowerCase()) ||
+          chat.from.toLowerCase().includes(text.toLowerCase())
       )
     );
   };
