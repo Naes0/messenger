@@ -39,6 +39,18 @@ const Sidebar = (props) => {
   const { drawWidth } = props;
 
   const useStyles = makeStyles((theme) => ({
+    root: {
+      marginTop: '8px',
+      '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'transparent',
+      },
+      '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'transparent',
+      },
+      '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'transparent',
+      },
+    },
     input: {
       height: '36px',
       borderRadius: '50px',
@@ -47,13 +59,12 @@ const Sidebar = (props) => {
     },
     drawer: {
       width: drawWidth,
-      flexShrink: 0,
-    },
-    margin: {
-      margin: theme.spacing(0.5),
     },
     cssLabel: {
       lineHeight: '1px',
+      '&.focused': {
+        color: 'rgba(0, 0, 0, 0.54)',
+      },
     },
   }));
 
@@ -84,11 +95,15 @@ const Sidebar = (props) => {
               label="Search Messenger"
               margin="normal"
               variant="outlined"
+              className={classes.root}
               InputProps={{
                 className: classes.input,
               }}
               InputLabelProps={{
-                className: classes.cssLabel,
+                classes: {
+                  root: classes.cssLabel,
+                  focused: 'focused',
+                },
               }}
               onChange={(event) => handleSearchChange(event.target.value)}
             />
