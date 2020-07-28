@@ -10,6 +10,7 @@ const Chatbar = (props) => {
       width: `calc(100% - ${drawWidth}px - 30px)`,
       marginLeft: drawWidth,
       backgroundColor: '#FFFFFF',
+      height: '60px',
     },
   }));
   const classes = useStyles();
