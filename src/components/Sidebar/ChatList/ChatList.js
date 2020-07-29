@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ChatList.css';
 import {
@@ -22,8 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const selectChat = (key) => {
+  console.log(key);
+};
+
 const ChatList = (props) => {
+  const [selected, setSelected] = useState();
   const { data } = props;
+
   return (
     <div className="ChatList">
       <List>
@@ -37,13 +44,14 @@ const ChatList = (props) => {
 
 const ChatPreview = (props) => {
   const classes = useStyles();
-  const { from, message } = props;
+  const { id, from, message } = props;
   return (
     <>
       <ListItem
         alignItems="flex-start"
         button="true"
         className={classes.button}
+        onClick={() => selectChat(id)}
       >
         <ListItemAvatar>
           <Avatar src={Profilephoto} />
