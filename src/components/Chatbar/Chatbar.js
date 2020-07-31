@@ -4,7 +4,7 @@ import React from 'react';
 import Profilephoto from '../../assets/profile_photo.jpg';
 
 const Chatbar = (props) => {
-  const { drawWidth } = props;
+  const { drawWidth, chatName } = props;
   const useStyles = makeStyles((theme) => ({
     appBar: {
       width: `calc(100% - ${drawWidth}px - 30px)`,
@@ -18,7 +18,7 @@ const Chatbar = (props) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="default">
         <Toolbar>
-          <h1>Name</h1>
+          <h1>{chatName}</h1>
         </Toolbar>
       </AppBar>
     </>

@@ -6,37 +6,9 @@ import ChatList from './ChatList/ChatList';
 import './Sidebar.css';
 import { useState } from 'react';
 
-const data = [
-  {
-    id: 1,
-    from: "Sean O'Neill",
-    message: 'I am super cool and awesome and wow',
-  },
-  {
-    id: 2,
-    from: 'Soyeon Kim',
-    message: 'I am super Cute',
-  },
-  {
-    id: 3,
-    from: 'Daniel Gan',
-    message: 'I am super small',
-  },
-  {
-    id: 4,
-    from: 'Nhat Dao',
-    message: 'I am big',
-  },
-  {
-    id: 5,
-    from: 'Nhan Dao',
-    message: 'I am big',
-  },
-];
-
 const Sidebar = (props) => {
+  const { data, drawWidth, onUpdateChatName } = props;
   const [chatData, setChatData] = useState(data);
-  const { drawWidth } = props;
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -80,6 +52,10 @@ const Sidebar = (props) => {
     );
   };
 
+  const getChatName = (name) => {
+    onUpdateChatName(name);
+  };
+
   return (
     <>
       <Drawer variant="permanent" className={classes.drawer} anchor="left">
@@ -109,7 +85,7 @@ const Sidebar = (props) => {
             />
           </div>
           <div className="chatList">
-            <ChatList data={chatData} />
+            <ChatList data={chatData} onChatSelect={getChatName} />
           </div>
         </div>
       </Drawer>
