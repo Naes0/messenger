@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ChatList.css';
@@ -23,12 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const selectChat = (key) => {
-  console.log(key);
-};
-
 const ChatList = (props) => {
-  const [selected, setSelected] = useState();
   const { data } = props;
 
   return (
@@ -43,8 +38,19 @@ const ChatList = (props) => {
 };
 
 const ChatPreview = (props) => {
+  const [selected, setSelected] = useState(0);
   const classes = useStyles();
   const { id, from, message } = props;
+
+  const selectChat = (key) => {
+    console.log(key);
+    console.log(selected);
+  };
+
+  useEffect((id) => {
+    setSelected(id);
+  }, []);
+
   return (
     <>
       <ListItem
@@ -52,6 +58,7 @@ const ChatPreview = (props) => {
         button="true"
         className={classes.button}
         onClick={() => selectChat(id)}
+        selected={selected === id}
       >
         <ListItemAvatar>
           <Avatar src={Profilephoto} />
