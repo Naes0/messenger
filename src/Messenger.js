@@ -29,6 +29,56 @@ const data = [
     from: 'Nhan Dao',
     message: 'I am big',
   },
+  {
+    id: 6,
+    from: "Sean O'Neill",
+    message: 'I am super cool and awesome and wow',
+  },
+  {
+    id: 7,
+    from: 'Soyeon Kim',
+    message: 'I am super Cute',
+  },
+  {
+    id: 8,
+    from: 'Daniel Gan',
+    message: 'I am super small',
+  },
+  {
+    id: 9,
+    from: 'Nhat Dao',
+    message: 'I am big',
+  },
+  {
+    id: 10,
+    from: 'Nhan Dao',
+    message: 'I am big',
+  },
+  {
+    id: 11,
+    from: "Sean O'Neill",
+    message: 'I am super cool and awesome and wow',
+  },
+  {
+    id: 12,
+    from: 'Soyeon Kim',
+    message: 'I am super Cute',
+  },
+  {
+    id: 13,
+    from: 'Daniel Gan',
+    message: 'I am super small',
+  },
+  {
+    id: 14,
+    from: 'Nhat Dao',
+    message: 'I am big',
+  },
+  {
+    id: 15,
+    from: 'Nhan Dao',
+    message: 'I am big',
+  },
 ];
 
 const Messenger = () => {
