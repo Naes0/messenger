@@ -32,6 +32,10 @@ const Sidebar = (props) => {
     drawer: {
       width: drawWidth,
     },
+    drawPaper: {
+      height: '100%',
+      overflow: 'auto',
+    },
     cssLabel: {
       lineHeight: '1px',
       '&.focused': {
@@ -58,7 +62,11 @@ const Sidebar = (props) => {
 
   return (
     <>
-      <Drawer variant="permanent" className={classes.drawer} anchor="left">
+      <Drawer
+        variant="permanent"
+        classes={{ root: classes.drawer, paper: classes.drawPaper }}
+        anchor="left"
+      >
         <div className="sidebar">
           <div className="banner">
             <div className="avatar">
