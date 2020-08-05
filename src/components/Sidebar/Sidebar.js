@@ -34,7 +34,10 @@ const Sidebar = (props) => {
     },
     drawPaper: {
       height: '100%',
-      overflow: 'auto',
+      overflow: 'hidden',
+      '&:hover': {
+        overflow: 'auto',
+      },
     },
     cssLabel: {
       lineHeight: '1px',
