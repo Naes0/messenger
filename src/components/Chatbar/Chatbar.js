@@ -18,6 +18,9 @@ const Chatbar = (props) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="default">
         <Toolbar>
+          <div className="avatar">
+            <Avatar src={Profilephoto} />
+          </div>
           <h1>{chatName}</h1>
         </Toolbar>
       </AppBar>
