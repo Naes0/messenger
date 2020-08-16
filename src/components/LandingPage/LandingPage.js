@@ -58,7 +58,7 @@ const LandingPage = () => {
       </section>
       <section id="main">
         <div className={classes.mainText}>
-          <span>The messenger</span> <br /> where the chatting expereince <br />
+          <span>The messenger</span> <br /> where the chatting experience <br />
           is worse, probably.
         </div>
       </section>
