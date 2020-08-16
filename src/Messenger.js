@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Messenger.css';
 import Sidebar from './components/Sidebar/Sidebar';
 import Chatbar from './components/Chatbar/Chatbar';
+import LandingPage from './components/LandingPage/LandingPage';
 
 const data = [
   {
@@ -91,12 +92,13 @@ const Messenger = () => {
 
   return (
     <div className="Messenger">
-      <Chatbar drawWidth={maxDrawWidth} chatName={currentChatName} />
+      {/* <Chatbar drawWidth={maxDrawWidth} chatName={currentChatName} />
       <Sidebar
         data={data}
         drawWidth={maxDrawWidth}
         onUpdateChatName={onUpdateChatName}
-      />
+      /> */}
+      <LandingPage />
     </div>
   );
 };
