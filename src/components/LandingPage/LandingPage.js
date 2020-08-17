@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './LandingPage.css';
-import { Typography, makeStyles, Link } from '@material-ui/core';
+import { Typography, makeStyles, Link, Button } from '@material-ui/core';
 import messenger_logo from '../../assets/messenger_logo.png';
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 const useStyles = makeStyles({
   header: {
@@ -25,13 +26,21 @@ const useStyles = makeStyles({
     fontWeight: '700',
   },
   list: {
-    paddingLeft: '900px',
+    paddingLeft: '897px',
   },
   link: {
     display: 'inline-block',
     margin: '0 50px',
     fontSize: '20px',
     color: 'black',
+  },
+  button: {
+    fontSize: '20px',
+    fontWeight: '700',
+    float: 'right',
+  },
+  loginButton: {
+    paddingRight: '400px',
   },
 });
 
@@ -44,7 +53,7 @@ const LandingPage = () => {
         <header className={classes.header}>
           <img src={messenger_logo} alt="logo" className={classes.image} />
           <Typography variant="h4" align="left" className={classes.Typography}>
-            Bad Messenger
+            Babo Messenger
           </Typography>
           <div>
             <nav className={classes.list}>
@@ -60,6 +69,17 @@ const LandingPage = () => {
         <div className={classes.mainText}>
           <span>The messenger</span> <br /> where the chatting experience <br />
           is worse, probably.
+        </div>
+      </section>
+      <section>
+        <div className={classes.loginButton}>
+          <Button
+            variant="outlined"
+            className={classes.button}
+            startIcon={<FacebookIcon style={{ fontSize: 20 }} />}
+          >
+            Login with Facebook
+          </Button>
         </div>
       </section>
     </div>
