@@ -4,6 +4,7 @@ import './LandingPage.css';
 import { Typography, makeStyles, Link, Button } from '@material-ui/core';
 import messenger_logo from '../../assets/messenger_logo.png';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import { Auth } from 'aws-amplify';
 
 const useStyles = makeStyles({
   header: {
@@ -45,6 +46,11 @@ const useStyles = makeStyles({
   },
 });
 
+const checkUser = async () => {
+  const user = await Auth.currentAuthenticatedUser();
+  console.log(user);
+};
+
 const LandingPage = () => {
   const classes = useStyles();
 
@@ -78,6 +84,11 @@ const LandingPage = () => {
             variant="outlined"
             className={classes.button}
             startIcon={<FacebookIcon style={{ fontSize: 20 }} />}
+            onClick={() =>
+              Auth.federatedSignIn({
+                provider: 'Facebook',
+              })
+            }
           >
             Login with Facebook
           </Button>

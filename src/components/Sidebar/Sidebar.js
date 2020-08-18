@@ -1,10 +1,11 @@
-import { Avatar, Drawer, TextField } from '@material-ui/core';
+import { Avatar, Drawer, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Profilephoto from '../../assets/profile_photo.jpg';
 import ChatList from './ChatList/ChatList';
 import './Sidebar.css';
 import { useState } from 'react';
+import { Auth } from 'aws-amplify';
 
 const Sidebar = (props) => {
   const { data, drawWidth, onUpdateChatName } = props;
@@ -45,6 +46,9 @@ const Sidebar = (props) => {
         color: 'rgba(0, 0, 0, 0.54)',
       },
     },
+    logout: {
+      paddingLeft: '150px',
+    },
   }));
 
   const classes = useStyles();
@@ -76,6 +80,11 @@ const Sidebar = (props) => {
               <Avatar src={Profilephoto} />
             </div>
             <h1>Chats</h1>
+            <div className={classes.logout}>
+              <Button variant="outlined" onClick={() => Auth.signOut()}>
+                Log Out
+              </Button>
+            </div>
           </div>
           <div className="search">
             <TextField
