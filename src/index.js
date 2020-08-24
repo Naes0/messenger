@@ -12,20 +12,23 @@ Amplify.configure(awsExports);
 
 const MessengerAuthCheck = () => {
   const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    Auth.currentAuthenticatedUser()
-      .then((data) => setUser(data))
-      .catch(console.log('not signed in'));
+    const checkAuth = async () => {
+      try {
+        const data = await Auth.currentAuthenticatedUser();
+        setUser(data);
+      }
+      catch (e) {
+        console.log('not signed in')
+      }
+    }
+    checkAuth();
   }, []);
-
-  useEffect(() => {
-    setIsAuthenticated(user !== null);
-  }, [user]);
-
-  return isAuthenticated ? <Messenger /> : <LandingPage />;
+  return user ? <Messenger /> : <LandingPage />;
 };
+
+
 
 ReactDOM.render(
   <React.StrictMode>
