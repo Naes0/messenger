@@ -18,17 +18,14 @@ const MessengerAuthCheck = () => {
       try {
         const data = await Auth.currentAuthenticatedUser();
         setUser(data);
+      } catch (e) {
+        console.log('not signed in');
       }
-      catch (e) {
-        console.log('not signed in')
-      }
-    }
+    };
     checkAuth();
   }, []);
-  return user ? <Messenger /> : <LandingPage />;
+  return user ? <Messenger user={user} /> : <LandingPage />;
 };
-
-
 
 ReactDOM.render(
   <React.StrictMode>

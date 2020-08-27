@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './Messenger.css';
 import Sidebar from './components/Sidebar/Sidebar';
 import Chatbar from './components/Chatbar/Chatbar';
-import LandingPage from './components/LandingPage/LandingPage';
-import { Auth } from 'aws-amplify';
 
 const data = [
   {
@@ -83,9 +81,12 @@ const data = [
   },
 ];
 
-const Messenger = () => {
+const Messenger = (props) => {
   const maxDrawWidth = 390;
   const [currentChatName, setCurrentChatName] = useState(data[0].from);
+  const { user } = props;
+
+  console.log(user);
 
   const onUpdateChatName = (name) => {
     setCurrentChatName(name);
